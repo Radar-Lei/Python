@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-""" Author: Radar-Lei directed version"""
+""" Author: Radar-Lei undirected version"""
 
 
 class Graph:
@@ -15,12 +15,19 @@ class Graph:
     # for adding the edge between two vertices
     def add_edge(self, from_vertex: int, to_vertex: int) -> None:
         # check if vertex is already present,
-        if from_vertex in self.vertex:
+        if from_vertex in self.vertex and to_vertex not in self.vertex:
             self.vertex[from_vertex].append(to_vertex)
+            self.vertex[to_vertex] = [from_vertex]
+        elif from_vertex not in self.vertex and to_vertex in self.vertex:
+            self.vertex[to_vertex].append(from_vertex)
+            self.vertex[from_vertex] = [to_vertex]
+        elif from_vertex in self.vertex and to_vertex in self.vertex:
+            self.vertex[from_vertex].append(to_vertex)
+            self.vertex[to_vertex].append(from_vertex)
         else:
             # else make a new vertex
             self.vertex[from_vertex] = [to_vertex]
-
+            self.vertex[to_vertex] = [from_vertex]
 
     def dfs(self) -> None:
         # visited array for storing already visited nodes
@@ -43,15 +50,23 @@ class Graph:
                 self.dfs_recursive(i, visited)
 
 
+
 if __name__ == "__main__":
     g = Graph()
     g.add_edge(0, 1)
-    g.add_edge(0, 2)
-    g.add_edge(1, 2)
-    g.add_edge(2, 0)
-    g.add_edge(2, 3)
-    g.add_edge(3, 3)
-
+    g.add_edge(1, 8)
+    g.add_edge(0, 9)
+    g.add_edge(9, 8)
+    g.add_edge(8, 7)
+    g.add_edge(7, 10)
+    g.add_edge(7, 11)
+    g.add_edge(7, 6)
+    g.add_edge(7, 3)
+    g.add_edge(3, 5)
+    g.add_edge(6, 5)
+    g.add_edge(3, 2)
+    g.add_edge(3, 4)
+    g.add_edge(12,12)
 
     g.print_graph()
     print("DFS:")
