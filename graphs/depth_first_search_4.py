@@ -50,7 +50,6 @@ class Graph:
                 self.dfs_recursive(i, visited)
 
 
-
 if __name__ == "__main__":
     g = Graph()
     g.add_edge(0, 4)
