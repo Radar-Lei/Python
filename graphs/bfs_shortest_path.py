@@ -25,7 +25,7 @@ def bfs_shortest_path(graph: dict, start, goal) -> str:
         Shortest path between `start` and `goal` nodes as a string of nodes.
         'Not found' string if no path found.
     Example:
-        >>> bfs_shortest_path(graph, "G", "D")
+        #>>> bfs_shortest_path(graph, "G", "D")
         ['G', 'C', 'A', 'B', 'D']
     """
     # keep track of explored nodes
