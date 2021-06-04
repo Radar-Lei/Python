@@ -6,6 +6,8 @@
 class Graph:
     def __init__(self):
         self.vertex = {}
+        self.count = 0
+        self.components = []
 
     # for printing the Graph vertices
     def print_graph(self) -> None:
@@ -29,7 +31,8 @@ class Graph:
             self.vertex[from_vertex] = [to_vertex]
             self.vertex[to_vertex] = [from_vertex]
 
-    def dfs(self) -> None:
+    def findComponents(self):
+
         # visited array for storing already visited nodes
         visited = [False] * len(self.vertex)
 
@@ -37,15 +40,18 @@ class Graph:
         for i in range(len(self.vertex)):
             if not visited[i]:
                 self.dfs_recursive(i, visited)
+                self.count += 1
+        return self.count, self.components
 
     def dfs_recursive(self, start_vertex: int, visited: list) -> None:
         # mark start vertex as visited
         visited[start_vertex] = True
+        self.components.append(self.count)
 
         print(start_vertex, end=" ")
 
         # Recur for all the vertices that are adjacent to this node
-        for i in self.vertex:
+        for i in self.vertex[start_vertex]:
             if not visited[i]:
                 self.dfs_recursive(i, visited)
 
@@ -56,6 +62,9 @@ if __name__ == "__main__":
     g.add_edge(0, 8)
     g.add_edge(0, 14)
     g.add_edge(0, 13)
+    g.add_edge(8, 4)
+    g.add_edge(8, 14)
+    g.add_edge(13, 14)
     g.add_edge(15, 10)
     g.add_edge(15, 2)
     g.add_edge(15, 9)
@@ -71,7 +80,9 @@ if __name__ == "__main__":
 
     g.print_graph()
     print("DFS:")
-    g.dfs()
+    count, components = g.findComponents()
+    print(count)
+    print(components)
 
     # OUTPUT:
     # 0  ->  1 -> 2
