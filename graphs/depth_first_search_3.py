@@ -45,7 +45,7 @@ class Graph:
         print(start_vertex, end=" ")
 
         # Recur for all the vertices that are adjacent to this node
-        for i in self.vertex:
+        for i in self.vertex[start_vertex]:
             if not visited[i]:
                 self.dfs_recursive(i, visited)
 
