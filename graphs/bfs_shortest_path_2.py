@@ -1,6 +1,4 @@
-"""Breadth-first search shortest path implementations.
-    doctest:
-    python -m doctest -v bfs_shortest_path.py
+"""Breadth-first search shortest path implementation for the lecture.
     Manual test:
     python bfs_shortest_path.py
 """
