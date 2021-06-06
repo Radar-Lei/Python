@@ -1,5 +1,5 @@
 """Breadth-first search shortest path implementation for the lecture.
-    Manual test:
+    Manual test: for undirected unweighted graphs
     python bfs_shortest_path.py
 """
 
