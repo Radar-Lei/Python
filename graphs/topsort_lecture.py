@@ -73,5 +73,5 @@ if __name__ == "__main__":
     g.add_edge('L', 'L')
 
     g.print_graph()
-    print("Ordering:")
+    print(" Topological ordering:")
     print(g.topsort())
